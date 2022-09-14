@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import NFTBlock from "./NFTBlock";
 function NFTDetail(props) {
@@ -25,8 +26,14 @@ function NFTDetail(props) {
           <h2 className="f:white t:left">Description</h2>
           <p className="f:gray-80 t:left f:20">{description}</p>
         </div>
-        <div className="w:45% flex ai:center jc:center b:1|solid|gray r:10">
-          <img src={image_url} alt="" className="" />
+        <div className="w:45% flex ai:center jc:center b:1|solid|gray r:10 position:rel">
+          <Image
+            src={image_url}
+            layout="fill"
+            objectFit="contain"
+            alt={name}
+            className=""
+          />
         </div>
       </div>
       <hr></hr>
