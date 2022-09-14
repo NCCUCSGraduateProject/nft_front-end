@@ -31,7 +31,7 @@ function NFTPage() {
       </div>
       <div className="grid grid-cols:5 jc:space-between ai:center">
         {list.map((item) => (
-          <NFTBlock uri={item.uri} imageUrl={item.image_preview_url} />
+          <NFTBlock key={item.uri} uri={item.uri} imageUrl={item.image_preview_url} />
         ))}
       </div>
     </>

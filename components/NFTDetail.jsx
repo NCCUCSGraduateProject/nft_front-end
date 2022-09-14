@@ -35,7 +35,7 @@ function NFTDetail(props) {
       <div className="grid grid-cols:5 jc:space-between ai:center">
         {top10List.slice(0, 5).map((item) => (
           <NFTBlock
-            id={item.uri}
+            key={item.uri}
             uri={item.uri}
             imageUrl={item.image_preview_url}
           />
@@ -45,7 +45,7 @@ function NFTDetail(props) {
       <div className="grid grid-cols:5 jc:space-between ai:center">
         {top10List.slice(5, 10).map((item) => (
           <NFTBlock
-            id={item.uri}
+            key={item.uri}
             uri={item.uri}
             imageUrl={item.image_preview_url}
           />
