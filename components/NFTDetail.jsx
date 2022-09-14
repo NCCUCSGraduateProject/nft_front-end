@@ -19,7 +19,7 @@ function NFTDetail(props) {
 
   return (
     <>
-      <div className="flex jc:space-between my:20">
+      <div className="flex jc:space-between my:20 min-h:600">
         <div className="w:45% b:1|solid|gray r:10 px:20">
           <h2 className="f:white t:left">Name</h2>
           <h1 className="f:gray-80 t:left">{name}</h1>
