@@ -14,7 +14,7 @@ function NFTPage() {
     <>
       <div className="flex w:full jc:center my:10">
         <button
-          className="h:50 w:50 f:20 bg:transparent b:1|solid|gray r:10 f:white"
+          className="h:50 w:50 f:20 bg:transparent b:1|solid|gray r:10 f:white cursor:pointer"
           onClick={() => setpage((page) => page - 1)}
         >
           &larr;
@@ -23,7 +23,7 @@ function NFTPage() {
           {page}
         </div>
         <button
-          className="h:50 w:50 f:20 bg:transparent b:1|solid|gray r:10 f:white"
+          className="h:50 w:50 f:20 bg:transparent b:1|solid|gray r:10 f:white cursor:pointer"
           onClick={() => setpage((page) => page + 1)}
         >
           &rarr;
@@ -31,8 +31,29 @@ function NFTPage() {
       </div>
       <div className="grid grid-cols:5 jc:space-between ai:center">
         {list.map((item) => (
-          <NFTBlock key={item.uri} uri={item.uri} imageUrl={item.image_preview_url} />
+          <NFTBlock
+            key={item.uri}
+            uri={item.uri}
+            imageUrl={item.image_preview_url || ""}
+          />
         ))}
+      </div>
+      <div className="flex w:full jc:center my:10">
+        <button
+          className="h:50 w:50 f:20 bg:transparent b:1|solid|gray r:10 f:white cursor:pointer"
+          onClick={() => setpage((page) => page - 1)}
+        >
+          &larr;
+        </button>
+        <div className="h:50 w:50 lh:3.125rem t:center f:25 f:bold f:white">
+          {page}
+        </div>
+        <button
+          className="h:50 w:50 f:20 bg:transparent b:1|solid|gray r:10 f:white cursor:pointer"
+          onClick={() => setpage((page) => page + 1)}
+        >
+          &rarr;
+        </button>
       </div>
     </>
   );

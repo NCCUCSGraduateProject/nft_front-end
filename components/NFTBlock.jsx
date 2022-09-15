@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import placeholder from "../public/placeholder.png";
 const NFTBlock = (props) => {
   const { uri, imageUrl } = props;
   return (
@@ -9,7 +10,7 @@ const NFTBlock = (props) => {
         key={uri}
       >
         <Image
-          src={imageUrl}
+          src={imageUrl || placeholder}
           alt={uri}
           layout="fill"
           objectFit="contain"

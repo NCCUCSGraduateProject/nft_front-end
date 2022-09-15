@@ -28,7 +28,7 @@ function NFTDetail(props) {
         </div>
         <div className="w:45% flex ai:center jc:center b:1|solid|gray r:10 position:rel">
           <Image
-            src={image_url}
+            src={image_url || ""}
             layout="fill"
             objectFit="contain"
             alt={name}
@@ -44,7 +44,7 @@ function NFTDetail(props) {
           <NFTBlock
             key={item.uri}
             uri={item.uri}
-            imageUrl={item.image_preview_url}
+            imageUrl={item.image_preview_url || ""}
           />
         ))}
       </div>
@@ -54,7 +54,7 @@ function NFTDetail(props) {
           <NFTBlock
             key={item.uri}
             uri={item.uri}
-            imageUrl={item.image_preview_url}
+            imageUrl={item.image_preview_url || ""}
           />
         ))}
       </div>
