@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@master/css": "^1.37.0",
+    "@master/keyframes.css": "^1.2.3",
     "mongodb": "^4.9.1",
     "next": "12.3.0",
     "react": "18.2.0",

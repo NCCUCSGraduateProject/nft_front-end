@@ -41,7 +41,7 @@ export default function Home() {
         </h1>
         <NFTPage /> */}
       </main>
-      <ChooseModal isOpen={showModal} onClose={() => { setShowModal(false) }} />
+      {showModal && <ChooseModal onClose={() => { setShowModal(false) }} />}
     </div>
   )
 }
