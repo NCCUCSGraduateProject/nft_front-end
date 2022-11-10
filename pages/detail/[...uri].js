@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import NFTDetail from '../../components/NFTDetail'
+import NFTDetail from 'components/NFTDetail'
 export default function Detail(props) {
     return (
         <div className="flex jc:center ai:center">

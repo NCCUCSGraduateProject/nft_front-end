@@ -1,15 +1,13 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import { MongoClient } from "mongodb"
-const MONGO_URL = process.env.MONGODB_URL;
-const MONGO_DBNAME = process.env.MONGODB_DBNAME;
-
+import MongoApp from "pages/api/config/mongo"
 const DIVIDE = 20;
 export default async function handler(req, res) {
     const { page } = req.query
     if (req.method === "GET") {
         if (page < 1) {
             res.status(400).json({ error: "page can not < 1" })
-        } const client = new MongoClient(MONGO_URL, { useNewUrlParser: true });
+        };
+        const client = MongoApp;
         const database = client.db(MONGO_DBNAME);
         const recData = database.collection("recData");
 
