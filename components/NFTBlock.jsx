@@ -6,7 +6,7 @@ const NFTBlock = (props) => {
   return (
     <Link href={`/detail/${uri}`}>
       <div
-        className="flex w:256 h:256 my:5 jc:center ai:center b:1|solid|gray r:10 cursor:pointer position:rel"
+        className="flex max-w:360 w:90% h:256 my:5 jc:center ai:center b:1|solid|gray r:10 cursor:pointer position:rel"
         key={uri}
       >
         <Image
