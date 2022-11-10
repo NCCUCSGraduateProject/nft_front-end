@@ -8,6 +8,8 @@ function NFTLike() {
       if (uriList) {
         uriList = JSON.parse(uriList);
         setList(uriList);
+      } else {
+        setList([]);
       }
     }
     checkUserData();
