@@ -1,5 +1,4 @@
 import { MongoClient } from "mongodb";
-const MONGO_DBNAME = process.env.MONGODB_DBNAME;
 const ENV = process.env.ENVIRONMENT;
 const MONGO_URL = ENV === "local" ? process.env.MONGODB_URL : process.env.MONGODB_REMOTE_URL;
 

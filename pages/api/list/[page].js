@@ -1,5 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import MongoApp from "pages/api/config/mongo"
+import MongoApp from "../config/mongo"
+const MONGO_DBNAME = process.env.MONGODB_DBNAME;
 const DIVIDE = 20;
 export default async function handler(req, res) {
     const { page } = req.query
