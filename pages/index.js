@@ -30,7 +30,7 @@ export default function Home() {
             window.dispatchEvent(new Event("storage"));
           }}>Clear Like</button>
         </div> 
-        <hr />*/}
+        <hr /> */}
         <div className="flex flex:col jc:center ai:center">
           <NFTRandom />
         </div>

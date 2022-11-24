@@ -70,7 +70,7 @@ const ChooseModal = ({ onClose }) => {
           )}
           {option &&
             option.map(({ image_url, name, uri }) => (
-              <BigNFTBlock uri={uri} image_url={image_url} name={name} />
+              <BigNFTBlock key={uri} uri={uri} image_url={image_url} name={name}/>
             ))}
         </div>
       </div>

@@ -3,19 +3,39 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import NFTBlock from "./NFTBlock";
 function NFTDetail(props) {
-  const { top10, image_url, description, name } = props.data;
-  const [top10List, setTop10List] = useState([]);
+  const { image_url, description, name, i2iCv, itemCF } = props.data;
+  const [recommend, setRecommend] = useState({});
   useEffect(() => {
     async function fetchData() {
-      const req = top10.map((id) => {
+      const i2iCvReq = i2iCv.top10.map((id) => {
         return fetch(`/api/detail/${id}`);
       });
-      const res = await Promise.all(req);
-      const data = await Promise.all(res.map((r) => r.json()));
-      setTop10List(data);
+      const itemCfReq = itemCF.top10.map((id) => {
+        return fetch(`/api/detail/${id}`);
+      });
+
+      const i2iCvRes = await Promise.all(i2iCvReq);
+      const i2iCvData = await Promise.all(i2iCvRes.map((r) => r.json()));
+
+      setRecommend((prev) => {
+        return {
+          ...prev,
+          i2iCv: i2iCvData,
+        };
+      });
+
+      const itemCfRes = await Promise.all(itemCfReq);
+      const itemCfdata = await Promise.all(itemCfRes.map((r) => r.json()));
+
+      setRecommend((prev) => {
+        return {
+          ...prev,
+          itemCf: itemCfdata,
+        };
+      });
     }
     fetchData();
-  }, [top10]);
+  }, [props.data]);
 
   return (
     <>
@@ -37,9 +57,9 @@ function NFTDetail(props) {
         </div>
       </div>
 
-      <h1 className="f:white t:left">Top10</h1>
+      <h1 className="f:white t:left">itemCF Top10</h1>
       <div className="grid grid-cols:5 jc:space-between ai:center h:240 gap:20 my:20">
-        {top10List.slice(0, 5).map((item) => (
+        {recommend.itemCf?.slice(0, 5).map((item) => (
           <NFTBlock
             size="full"
             scale={1.2}
@@ -50,7 +70,31 @@ function NFTDetail(props) {
         ))}
       </div>
       <div className="grid grid-cols:5 jc:space-between ai:center h:240 gap:20 my:20">
-        {top10List.slice(5, 10).map((item) => (
+        {recommend.itemCf?.slice(5, 10).map((item) => (
+          <NFTBlock
+            size="full"
+            scale={1.2}
+            key={item.uri}
+            uri={item.uri}
+            imageUrl={item.image_preview_url || ""}
+          />
+        ))}
+      </div>
+
+      <h1 className="f:white t:left">i2i CV Top10</h1>
+      <div className="grid grid-cols:5 jc:space-between ai:center h:240 gap:20 my:20">
+        {recommend.i2iCv?.slice(0, 5).map((item) => (
+          <NFTBlock
+            size="full"
+            scale={1.2}
+            key={item.uri}
+            uri={item.uri}
+            imageUrl={item.image_preview_url || ""}
+          />
+        ))}
+      </div>
+      <div className="grid grid-cols:5 jc:space-between ai:center h:240 gap:20 my:20">
+        {recommend.i2iCv?.slice(5, 10).map((item) => (
           <NFTBlock
             size="full"
             scale={1.2}
