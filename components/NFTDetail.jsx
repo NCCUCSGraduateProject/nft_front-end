@@ -39,75 +39,82 @@ function NFTDetail(props) {
 
   return (
     <>
-      <div className="flex jc:space-between my:20 min-h:600">
-        <div className="w:45% r:10 px:20 bg:linear-gradient(135deg,#313131|0%,#373737|100%) m:0 r:20px cursor:pointer position:rel shadow:9px|9px|18px|rgba(21,21,21,0.2),9px|-9px|18px|rgba(21,21,21,0.2),-9px|-9px|18px|rgba(83,83,83,0.9),9px|9px|23px|rgba(21,21,21,0.9)">
-          <h2 className="f:gray-60 t:left">Name</h2>
-          <h1 className="f:white t:left">{name}</h1>
-          <h2 className="f:gray-60 t:left">Description</h2>
-          <p className="f:white t:left f:20">{description}</p>
+      <div className="my:10vh r:20 px:40 py:20 shadow:inset|9px|9px|18px|rgba(21,21,21,0.2),inset|9px|-9px|18px|rgba(21,21,21,0.2),inset|-9px|-9px|18px|rgba(83,83,83,0.9),inset|9px|9px|23px|rgba(21,21,21,0.9)">
+        <div className="flex jc:space-evenly my:20 gap:10">
+          <div className="w:60% r:10 px:20">
+            {/* <div className="w:30% r:10 px:20 bg:linear-gradient(135deg,#313131|0%,#373737|100%) m:0 position:rel shadow:9px|9px|18px|rgba(21,21,21,0.2),9px|-9px|18px|rgba(21,21,21,0.2),-9px|-9px|18px|rgba(83,83,83,0.9),9px|9px|23px|rgba(21,21,21,0.9)"> */}
+            <h2 className="f:gray-60 t:left">Name</h2>
+            <h1 className="f:white t:left">{name || "No name"}</h1>
+            <h2 className="f:gray-60 t:left">Description</h2>
+            <p className="f:white t:left f:20 max-h:100 overflow-y:scroll">
+              {description || "No description"}
+            </p>
+          </div>
+          <div className="overflow:hidden p:2% w:30% aspect:1/1 flex r:20px bg:linear-gradient(135deg,#313131|0%,#373737|100%) m:0 jc:center ai:center position:rel shadow:9px|9px|18px|rgba(21,21,21,0.2),9px|-9px|18px|rgba(21,21,21,0.2),-9px|-9px|18px|rgba(83,83,83,0.9),9px|9px|23px|rgba(21,21,21,0.9)">
+            <Image
+              src={image_url || ""}
+              fill={true}
+              alt={name}
+              className="r:20px position:rel!"
+            />
+          </div>
         </div>
-        <div className="w:45% flex ai:center jc:center r:20px position:rel bg:linear-gradient(135deg,#313131|0%,#373737|100%) flex m:0 jc:center ai:center r:10 cursor:pointer position:rel shadow:9px|9px|18px|rgba(21,21,21,0.2),9px|-9px|18px|rgba(21,21,21,0.2),-9px|-9px|18px|rgba(83,83,83,0.9),9px|9px|23px|rgba(21,21,21,0.9)">
-          <Image
-            src={image_url || ""}
-            width={500}
-            height={500}
-            alt={name}
-            className="w:90% r:20px"
-          />
+      </div>
+      <div className="my:10vh r:20 px:40 py:20 shadow:inset|9px|9px|18px|rgba(21,21,21,0.2),inset|9px|-9px|18px|rgba(21,21,21,0.2),inset|-9px|-9px|18px|rgba(83,83,83,0.9),inset|9px|9px|23px|rgba(21,21,21,0.9)">
+        <h1 className="f:white t:left lh:3">itemCF Top10</h1>
+        <div className="flex jc:space-between ai:center h:200 my:20 w:full">
+          {recommend.itemCf?.slice(0, 5).map((item) => (
+            <NFTBlock
+              size="160"
+              key={item.uri}
+              uri={item.uri}
+              imageUrl={item.image_preview_url || ""}
+            />
+          ))}
+        </div>
+        <div className="flex jc:space-between ai:center h:200 my:20 w:full">
+          {recommend.itemCf?.slice(5, 10).map((item) => (
+            <NFTBlock
+              size="160"
+              key={item.uri}
+              uri={item.uri}
+              imageUrl={item.image_preview_url || ""}
+            />
+          ))}
         </div>
       </div>
 
-      <h1 className="f:white t:left">itemCF Top10</h1>
-      <div className="grid grid-cols:5 jc:space-between ai:center h:240 gap:20 my:20">
-        {recommend.itemCf?.slice(0, 5).map((item) => (
-          <NFTBlock
-            size="full"
-            scale={1.2}
-            key={item.uri}
-            uri={item.uri}
-            imageUrl={item.image_preview_url || ""}
-          />
-        ))}
+      <div className="my:10vh r:20 px:40 py:20 shadow:inset|9px|9px|18px|rgba(21,21,21,0.2),inset|9px|-9px|18px|rgba(21,21,21,0.2),inset|-9px|-9px|18px|rgba(83,83,83,0.9),inset|9px|9px|23px|rgba(21,21,21,0.9)">
+        <h1 className="f:white t:left lh:2">i2i CV Top10</h1>
+        <div className="flex jc:space-between ai:center h:200 my:20 w:full">
+          {recommend.i2iCv?.slice(0, 5).map((item) => (
+            <NFTBlock
+              size="160"
+              key={item.uri}
+              uri={item.uri}
+              imageUrl={item.image_preview_url || ""}
+            />
+          ))}
+        </div>
+        <div className="flex jc:space-between ai:center h:200 my:20 w:full">
+          {recommend.i2iCv?.slice(5, 10).map((item) => (
+            <NFTBlock
+              size="160"
+              key={item.uri}
+              uri={item.uri}
+              imageUrl={item.image_preview_url || ""}
+            />
+          ))}
+        </div>
       </div>
-      <div className="grid grid-cols:5 jc:space-between ai:center h:240 gap:20 my:20">
-        {recommend.itemCf?.slice(5, 10).map((item) => (
-          <NFTBlock
-            size="full"
-            scale={1.2}
-            key={item.uri}
-            uri={item.uri}
-            imageUrl={item.image_preview_url || ""}
-          />
-        ))}
+      <div className="w:full flex jc:center">
+        <Link
+          href="/"
+          className="overflow:hidden w:fit px:20 flex r:20px bg:linear-gradient(135deg,#313131|0%,#373737|100%) m:0 jc:center ai:center position:rel shadow:9px|9px|18px|rgba(21,21,21,0.2),9px|-9px|18px|rgba(21,21,21,0.2),-9px|-9px|18px|rgba(83,83,83,0.9),9px|9px|23px|rgba(21,21,21,0.9) cursor:pointer shadow:inset|9px|9px|18px|rgba(21,21,21,0.2),inset|9px|-9px|18px|rgba(21,21,21,0.2),inset|-9px|-9px|18px|rgba(83,83,83,0.9),inset|9px|9px|23px|rgba(21,21,21,0.9):hover opacity:0.8:hover"
+        >
+          <h3 className="f:white t:center">Back to Home</h3>
+        </Link>
       </div>
-
-      <h1 className="f:white t:left">i2i CV Top10</h1>
-      <div className="grid grid-cols:5 jc:space-between ai:center h:240 gap:20 my:20">
-        {recommend.i2iCv?.slice(0, 5).map((item) => (
-          <NFTBlock
-            size="full"
-            scale={1.2}
-            key={item.uri}
-            uri={item.uri}
-            imageUrl={item.image_preview_url || ""}
-          />
-        ))}
-      </div>
-      <div className="grid grid-cols:5 jc:space-between ai:center h:240 gap:20 my:20">
-        {recommend.i2iCv?.slice(5, 10).map((item) => (
-          <NFTBlock
-            size="full"
-            scale={1.2}
-            key={item.uri}
-            uri={item.uri}
-            imageUrl={item.image_preview_url || ""}
-          />
-        ))}
-      </div>
-
-      <Link href="/">
-        <h3 className="f:white t:center cursor:pointer">Back to Home</h3>
-      </Link>
     </>
   );
 }

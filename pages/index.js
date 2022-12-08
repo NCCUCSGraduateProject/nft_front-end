@@ -15,7 +15,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="w:80% t:center">
-        <h1 className="f:60 f:white lh:2">
+        <h1 className="f:60 f:white lh:1">
           NFTintrist
         </h1>
         {/* <h1 className="f:40 f:white lh:1 t:left">
