@@ -9,7 +9,7 @@ export default async function handler(req, res) {
         };
         const client = MongoApp;
         const database = client.db(MONGO_DBNAME);
-        const recData = database.collection("recData");
+        const recData = database.collection("asset_rawdata");
 
         const query = [{ "$sample": { size: parseInt(number) } }];
         const result = await recData.aggregate(query).toArray();
