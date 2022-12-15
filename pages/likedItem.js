@@ -85,6 +85,14 @@ export default function Home() {
 
         <h1 className="f:40 f:white lh:1 t:left">Recommend</h1>
         {list !== undefined && <NFTList list={list} />}
+        <div className="w:full flex jc:center">
+          <Link
+            href="/"
+            className="overflow:hidden w:fit px:20 flex r:20px bg:linear-gradient(135deg,#313131|0%,#373737|100%) m:0 jc:center ai:center position:rel shadow:9px|9px|18px|rgba(21,21,21,0.2),9px|-9px|18px|rgba(21,21,21,0.2),-9px|-9px|18px|rgba(83,83,83,0.9),9px|9px|23px|rgba(21,21,21,0.9) cursor:pointer shadow:inset|9px|9px|18px|rgba(21,21,21,0.2),inset|9px|-9px|18px|rgba(21,21,21,0.2),inset|-9px|-9px|18px|rgba(83,83,83,0.9),inset|9px|9px|23px|rgba(21,21,21,0.9):hover opacity:0.8:hover"
+          >
+            <h3 className="f:white t:center">Back to Home</h3>
+          </Link>
+        </div>
       </main>
       {showModal && (
         <ChooseModal
