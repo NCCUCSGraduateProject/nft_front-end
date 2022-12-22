@@ -35,16 +35,17 @@ export default async function handler(req, res) {
         const resultRecommend = await assetData.aggregate(queryRecommend).toArray();
 
         // Shuffle
-        Array.prototype.shuffle = function () {
-            let i = this.length;
-            while (i) {
-                let j = Math.floor(Math.random() * i);
-                let t = this[--i];
-                this[i] = this[j];
-                this[j] = t;
-            }
-            return this;
-        }
-        res.status(200).json(resultRecommend.shuffle());
+        // Array.prototype.shuffle = function () {
+        //     let i = this.length;
+        //     while (i) {
+        //         let j = Math.floor(Math.random() * i);
+        //         let t = this[--i];
+        //         this[i] = this[j];
+        //         this[j] = t;
+        //     }
+        //     return this;
+        // }
+        // res.status(200).json(resultRecommend.shuffle());
+        res.status(200).json(resultRecommend);
     }
 }

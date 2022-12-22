@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import NFTBlock from "./NFTBlock";
+import { toast } from "react-hot-toast";
 function NFTDetail(props) {
   const { uri, image_url, description, name, i2iCv, itemCF } = props.data;
   const [recommend, setRecommend] = useState({});
@@ -35,9 +36,10 @@ function NFTDetail(props) {
       });
     }
     fetchData();
-  }, [props.data]);
+  }, [itemCF.top10, i2iCv.top10]);
 
   const add2Like = (uri, image_url) => {
+    toast.success("Added to like list");
     let uriList = window.localStorage.getItem("like");
     if (uriList) {
       uriList = JSON.parse(uriList);
