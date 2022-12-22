@@ -44,10 +44,8 @@ function NFTDetail(props) {
             {/* <div className="w:30% r:10 px:20 bg:linear-gradient(135deg,#313131|0%,#373737|100%) m:0 position:rel shadow:9px|9px|18px|rgba(21,21,21,0.2),9px|-9px|18px|rgba(21,21,21,0.2),-9px|-9px|18px|rgba(83,83,83,0.9),9px|9px|23px|rgba(21,21,21,0.9)"> */}
             <h2 className="f:gray-60 t:left">Name</h2>
             <h1 className="f:white t:left">{name || "No name"}</h1>
-            <h2 className="f:gray-60 t:left">Address</h2>
-            <p className="f:white t:left f:20 max-h:100 overflow-y:scroll">
-              {user_address || "No description"}
-            </p>
+            <h2 className="f:gray-60 t:left">User liked item count</h2>
+            <p className="f:white t:left f:20 max-h:100">{userLiked.length}</p>
           </div>
         </div>
       </div>

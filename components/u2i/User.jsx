@@ -9,7 +9,6 @@ function User() {
         let newList = data.map((item) => {
           return {
             ...item,
-            scale: 1,
           };
         });
         setList((list) => [...list, ...newList]);
