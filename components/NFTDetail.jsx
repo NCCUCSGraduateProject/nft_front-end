@@ -3,7 +3,10 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import NFTBlock from "./NFTBlock";
 import { toast } from "react-hot-toast";
+import { useRouter } from "next/router";
+
 function NFTDetail(props) {
+  const router = useRouter();
   const { uri, image_url, description, name, i2iCv, itemCF } = props.data;
   const [recommend, setRecommend] = useState({});
   useEffect(() => {
@@ -131,13 +134,15 @@ function NFTDetail(props) {
           ))}
         </div>
       </div>
-      <div className="w:full flex jc:center">
-        <Link
-          href="/"
+      <div className="w:full flex jc:center my:50">
+        <div
           className="overflow:hidden w:fit px:20 flex r:20px bg:linear-gradient(135deg,#313131|0%,#373737|100%) m:0 jc:center ai:center position:rel shadow:9px|9px|18px|rgba(21,21,21,0.2),9px|-9px|18px|rgba(21,21,21,0.2),-9px|-9px|18px|rgba(83,83,83,0.9),9px|9px|23px|rgba(21,21,21,0.9) cursor:pointer shadow:inset|9px|9px|18px|rgba(21,21,21,0.2),inset|9px|-9px|18px|rgba(21,21,21,0.2),inset|-9px|-9px|18px|rgba(83,83,83,0.9),inset|9px|9px|23px|rgba(21,21,21,0.9):hover opacity:0.8:hover"
+          onClick={() => {
+            router.push("/");
+          }}
         >
           <h3 className="f:white t:center">Back to Home</h3>
-        </Link>
+        </div>
       </div>
     </>
   );

@@ -3,19 +3,21 @@ import { useState, useEffect } from "react";
 import Head from "next/head";
 import NFTList from "../components/NFTList";
 import ChooseModal from "../components/Modal";
+import { useRouter } from 'next/router'
 
 export default function Home() {
+  const router = useRouter()
   const [showModal, setShowModal] = useState(false);
   const [list, setList] = useState([]);
-  const [choiseList, setChoiseList] = useState(undefined);
+  const [selectedList, setSelectedList] = useState(undefined);
   useEffect(() => {
     const checkUserData = () => {
       let uriList = window.localStorage.getItem("choise");
       if (uriList) {
         uriList = JSON.parse(uriList);
-        setChoiseList(uriList);
+        setSelectedList(uriList);
       } else {
-        setChoiseList([]);
+        setSelectedList([]);
       }
     }
     checkUserData();
@@ -40,7 +42,7 @@ export default function Home() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        likeList: choiseList,
+        likeList: selectedList,
       }),
     }).then((res) => {
       res.json().then((data) => {
@@ -50,13 +52,13 @@ export default function Home() {
   }
 
   useEffect(() => {
-    if (choiseList === undefined) { return; }
-    if (choiseList.length > 0) {
+    if (selectedList === undefined) { return; }
+    if (selectedList.length > 0) {
       getLikeNFTRecommend();
     } else {
       getRandomNFT();
     }
-  }, [choiseList]);
+  }, [selectedList]);
 
   return (
     <div className="flex jc:center ai:center">
@@ -67,8 +69,8 @@ export default function Home() {
       </Head>
       <main className="w:80% t:center">
         {/* <h1 className="f:60 f:white lh:1">NFTintrist</h1> */}
-        <h1 className="f:40 f:white lh:1 t:left">Choise Item</h1>
-        {choiseList !== undefined && <NFTList list={choiseList} />}
+        <h1 className="f:40 f:white lh:1 t:left">Selected Item</h1>
+        {selectedList !== undefined && <NFTList list={selectedList} />}
 
         <div className="my:20 flex flex-row jc:center ai:center gap:50">
           <div
@@ -84,20 +86,22 @@ export default function Home() {
               window.dispatchEvent(new Event("storage"));
             }}
           >
-            Clear Choise
+            Clear Selected
           </div>
         </div>
         <hr />
 
         <h1 className="f:40 f:white lh:1 t:left">Recommend</h1>
         {list !== undefined && <NFTList list={list} />}
-        <div className="w:full flex jc:center">
-          <Link
-            href="/"
+        <div className="w:full flex jc:center my:50">
+          <div
             className="overflow:hidden w:fit px:20 flex r:20px bg:linear-gradient(135deg,#313131|0%,#373737|100%) m:0 jc:center ai:center position:rel shadow:9px|9px|18px|rgba(21,21,21,0.2),9px|-9px|18px|rgba(21,21,21,0.2),-9px|-9px|18px|rgba(83,83,83,0.9),9px|9px|23px|rgba(21,21,21,0.9) cursor:pointer shadow:inset|9px|9px|18px|rgba(21,21,21,0.2),inset|9px|-9px|18px|rgba(21,21,21,0.2),inset|-9px|-9px|18px|rgba(83,83,83,0.9),inset|9px|9px|23px|rgba(21,21,21,0.9):hover opacity:0.8:hover"
+            onClick={() => {
+              router.push("/");
+            }}
           >
             <h3 className="f:white t:center">Back to Home</h3>
-          </Link>
+          </div>
         </div>
       </main>
       {showModal && (
