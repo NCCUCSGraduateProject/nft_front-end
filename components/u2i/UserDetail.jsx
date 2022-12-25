@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import placeholder from "../../public/placeholder.png";
 import { useState, useEffect } from "react";
 import NFTBlock from "../NFTBlock";
 import { useRouter } from "next/router";
@@ -43,11 +44,29 @@ function NFTDetail(props) {
       <div className="my:10vh r:20 px:40 py:20 shadow:inset|9px|9px|18px|rgba(21,21,21,0.2),inset|9px|-9px|18px|rgba(21,21,21,0.2),inset|-9px|-9px|18px|rgba(83,83,83,0.9),inset|9px|9px|23px|rgba(21,21,21,0.9)">
         <div className="flex jc:space-evenly my:20 gap:10">
           <div className="w:60% r:10 px:20">
-            {/* <div className="w:30% r:10 px:20 bg:linear-gradient(135deg,#313131|0%,#373737|100%) m:0 position:rel shadow:9px|9px|18px|rgba(21,21,21,0.2),9px|-9px|18px|rgba(21,21,21,0.2),-9px|-9px|18px|rgba(83,83,83,0.9),9px|9px|23px|rgba(21,21,21,0.9)"> */}
             <h2 className="f:gray-60 t:left">Name</h2>
             <h1 className="f:white t:left">{name || "No name"}</h1>
             <h2 className="f:gray-60 t:left">User liked item count</h2>
             <p className="f:white t:left f:20 max-h:100">{userLiked.length}</p>
+            <div className="w:60% r:10 px:20 flex flex:row gap:10 jc:space-evenly">
+              <div className="w:30% r:10 px:20 bg:linear-gradient(135deg,#313131|0%,#373737|100%) m:0 position:rel shadow:9px|9px|18px|rgba(21,21,21,0.2),9px|-9px|18px|rgba(21,21,21,0.2),-9px|-9px|18px|rgba(83,83,83,0.9),9px|9px|23px|rgba(21,21,21,0.9)"></div>
+              {/* <div>
+              <h2 className="f:gray-60 t:left">Name</h2>
+              <h1 className="f:white t:left">{name || "No name"}</h1>
+            </div>
+            <div>
+              <h2 className="f:gray-60 t:left">User liked item count</h2>
+              <h1 className="f:white t:left">{userLiked.length}</h1>
+            </div> */}
+            </div>
+          </div>
+          <div className="overflow:hidden p:2% w:20% aspect:1/1 flex r:20px bg:linear-gradient(135deg,#313131|0%,#373737|100%) m:0 jc:center ai:center position:rel shadow:9px|9px|18px|rgba(21,21,21,0.2),9px|-9px|18px|rgba(21,21,21,0.2),-9px|-9px|18px|rgba(83,83,83,0.9),9px|9px|23px|rgba(21,21,21,0.9)">
+            <Image
+              src={userRecommend[0]?.imageUrl || placeholder}
+              fill="fill"
+              alt={name}
+              className="r:20px position:rel!"
+            />
           </div>
         </div>
       </div>
