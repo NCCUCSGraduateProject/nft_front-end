@@ -3,7 +3,7 @@ import UserBlock from "./UserBlock";
 function User() {
   const [list, setList] = useState([]);
   const pageRef = useRef(1);
-  const getRandomNFT = () => {
+  const getUserNFT = () => {
     fetch(`/api/list/user?page=${pageRef.current}&divide=20`).then((res) => {
       res.json().then((data) => {
         let newList = data.map((item) => {
@@ -16,7 +16,7 @@ function User() {
     });
   };
   useEffect(() => {
-    getRandomNFT();
+    getUserNFT();
     // 無限滾動函數
     function infiniteScroll() {
       // 設置滾動事件監聽器
@@ -24,8 +24,8 @@ function User() {
         // 檢查是否到達頁面底部
         if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
           // 在此處添加需要在到達頁面底部時進行的操作
-          getRandomNFT();
           pageRef.current++;
+          getUserNFT();
         }
       });
     }
